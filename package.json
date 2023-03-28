@@ -1,0 +1,19 @@
+{
+  "name": "inst630-obstaclepark",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/maxwell-morris28/INST630-ObstaclePark.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/maxwell-morris28/INST630-ObstaclePark/issues"
+  },
+  "homepage": "https://github.com/maxwell-morris28/INST630-ObstaclePark#readme"
+}
