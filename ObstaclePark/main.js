@@ -22,9 +22,8 @@ camera.position.setZ(30);
 
 renderer.render(scene, camera);
 
-canvas.addEventListener('resize', () => {
-    
-});
+canvas.height=window.innerHeight;
+canvas.width=window.innerWidth;
 
 const geometry = new THREE.TorusGeometry(10, 3, 16, 100);
 const material = new THREE.MeshBasicMaterial( {color: 0xFF6347, wireframe: true  });
@@ -39,6 +38,11 @@ function animate() {
     torus.rotation.y += 0.005;
     torus.rotation.z += 0.01;
 
+    canvas.height=window.innerHeight;
+    canvas.width=window.innerWidth;
+    renderer.setPixelRatio(window.devicePixelRatio);
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    camera.position.setZ(30);
     renderer.render(scene, camera);
 }
 
