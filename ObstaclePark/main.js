@@ -1,9 +1,14 @@
 import './style.css'
 import * as THREE from "three";
+import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
+
+
+//const OrbitControls = oc(THREE);
 
 //Creating the scene that holds all 
 const scene = new THREE.Scene();
-scene.background = new THREE.Color(0x24252a)
+scene.background = new THREE.Color(0x24252a);
+
 
 //Perspective Camera
 const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight , 0.1, 1000);
@@ -16,9 +21,10 @@ const renderer = new THREE.WebGLRenderer({
 const canvas = document.querySelector('#bg');
 
 
-
 renderer.setPixelRatio(window.devicePixelRatio);
 renderer.setSize(window.innerWidth, window.innerHeight);
+//document.body.appendChild( renderer.domElement );
+
 camera.position.setZ(30);
 
 renderer.render(scene, camera);
@@ -35,6 +41,7 @@ const hedron = new THREE.Mesh(geometry, material);
 //scene.add(torus);
 scene.add(hedron);
 
+const controls = new OrbitControls(camera, renderer.domElement);
 
 
 function animate() {
@@ -49,9 +56,10 @@ function animate() {
     renderer.setPixelRatio(window.devicePixelRatio);
     renderer.setSize(window.innerWidth, window.innerHeight);
     camera.position.setZ(30);
+
+    controls.update();
     renderer.render(scene, camera);
 }
 
 animate();
 
-document.addEventListener();
