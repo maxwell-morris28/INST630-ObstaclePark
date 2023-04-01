@@ -5,6 +5,10 @@ canvas {
   z-index:-1;
   display: flex;
 }
+
+.background {
+  background: rgba(0, 0, 0, 0.1);
+}
 .main {
   display: flex;
   flex-direction: column;
@@ -49,9 +53,13 @@ button {
   letter-spacing: 1px;
   font-size: large;
   border-radius: 10px;
+  border: none;
   min-width: 200px;
+  /*filter: drop-shadow(10px 1px);*/
 
-  /* Inside auto layout */
+}
 
-  
+button:hover {
+  background-color: gray;
+  transition: 300ms;
 }

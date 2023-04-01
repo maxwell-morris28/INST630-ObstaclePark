@@ -3,6 +3,7 @@ import * as THREE from "three";
 
 //Creating the scene that holds all 
 const scene = new THREE.Scene();
+scene.background = new THREE.Color(0x24252a)
 
 //Perspective Camera
 const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight , 0.1, 1000);
@@ -25,18 +26,23 @@ renderer.render(scene, camera);
 canvas.height=window.innerHeight;
 canvas.width=window.innerWidth;
 
-const geometry = new THREE.TorusGeometry(10, 3, 16, 100);
+//const geometry = new THREE.TorusGeometry(10, 3, 16, 100);
+const geometry = new THREE.IcosahedronGeometry(18, 1);
 const material = new THREE.MeshBasicMaterial( {color: 0xFF6347, wireframe: true  });
-const torus = new THREE.Mesh(geometry, material);
+//const torus = new THREE.Mesh(geometry, material);
+const hedron = new THREE.Mesh(geometry, material);
 
-scene.add(torus);
+//scene.add(torus);
+scene.add(hedron);
+
+
 
 function animate() {
     requestAnimationFrame(animate);
 
-    torus.rotation.x += 0.01;
-    torus.rotation.y += 0.005;
-    torus.rotation.z += 0.01;
+    hedron.rotation.x += 0.01;
+    hedron.rotation.y += 0.005;
+    //hedron.rotation.z += 0.005;
 
     canvas.height=window.innerHeight;
     canvas.width=window.innerWidth;
@@ -47,3 +53,5 @@ function animate() {
 }
 
 animate();
+
+document.addEventListener();
