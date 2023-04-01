@@ -44,6 +44,7 @@ scene.add(hedron);
 const controls = new OrbitControls(camera, renderer.domElement);
 
 
+
 function animate() {
     requestAnimationFrame(animate);
 
@@ -55,7 +56,7 @@ function animate() {
     canvas.width=window.innerWidth;
     renderer.setPixelRatio(window.devicePixelRatio);
     renderer.setSize(window.innerWidth, window.innerHeight);
-    camera.position.setZ(30);
+    //camera.position.setZ(30);
 
     controls.update();
     renderer.render(scene, camera);
@@ -63,3 +64,22 @@ function animate() {
 
 animate();
 
+
+
+document.addEventListener('mousemove', function(e){
+    let scale = -0.005;
+    hedron.rotateY( e.movementX * scale );
+    hedron.rotateX( e.movementY * scale ); 
+    //hedron.rotation.z = 0; //this is important to keep the camera level..
+})
+    
+//the camera rotation pivot
+hedron.rotation.order = "XYZ"; //this is important to keep level, so Z should be the last axis to rotate in order...
+//hedron.position.copy( mesh.position );
+scene.add(hedron );
+
+//offset the camera and add it to the pivot
+//you could adapt the code so that you can 'zoom' by changing the z value in camera.position in a mousewheel event..
+let cameraDistance = 1;
+//camera.position.z = cameraDistance;
+//hedron.add( camera );
