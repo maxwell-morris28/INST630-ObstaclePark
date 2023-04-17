@@ -31,14 +31,73 @@ const player = new THREE.Mesh(geometry, material);
 
 scene.add(player);
 
+
 player.translateY(2);
 
+//Ground
+
 const groundTexture = new THREE.TextureLoader().load('pexels-pixabay-69927.jpg');
-const plane = new THREE.PlaneGeometry(100, 1000);
+const plane = new THREE.PlaneGeometry(100, 500);
 const ground_color = new THREE.MeshBasicMaterial( {map: groundTexture});
 const ground = new THREE.Mesh(plane, ground_color);
 
 scene.add(ground);
+
+//Level Obstacles
+
+//base box obstacle
+const obstacle = new THREE.BoxGeometry(10,10, 3);
+const obstacleMaterial = new THREE.MeshBasicMaterial( {color: 0xFF6347});
+
+const boxObstacleOne = new THREE.Mesh(geometry, obstacleMaterial);
+//boxObstacleOne.position.z -= 100;
+boxObstacleOne.position.y +=2;
+//scene.add(boxObstacleOne);
+
+const boxObstacleTwo = new THREE.Mesh(geometry, obstacleMaterial);
+//scene.add(boxObstacleTwo);
+boxObstacleTwo.position.x += 10;
+//boxObstacleTwo.position.z -= 100;
+boxObstacleTwo.position.y +=2;
+
+const boxObstacleThree = new THREE.Mesh(geometry, obstacleMaterial);
+//scene.add(boxObstacleThree);
+boxObstacleThree.position.x -= 10;
+//boxObstacleThree.position.z -= 100;
+boxObstacleThree.position.y +=2;
+
+const boxObstacleFour = new THREE.Mesh(geometry, obstacleMaterial);
+//scene.add(boxObstacleFour);
+boxObstacleFour.position.x -= 20;
+//boxObstacleFour.position.z -= 100;
+boxObstacleFour.position.y +=2;
+
+const boxObstacleFive = new THREE.Mesh(geometry, obstacleMaterial);
+//scene.add(boxObstacleFive);
+boxObstacleFive.position.x += 20;
+//boxObstacleFive.position.z -= 100;
+boxObstacleFive.position.y +=2;
+
+
+const rowOne = [boxObstacleOne, boxObstacleTwo, boxObstacleThree, boxObstacleFour, boxObstacleFive];
+
+const rowTwo = [boxObstacleOne, boxObstacleTwo, boxObstacleThree, boxObstacleFour, boxObstacleFive];
+
+
+rowOne.forEach(x => {
+    scene.add(x);
+    x.position.z -= 100;
+})
+
+/*rowTwo.forEach(y => {
+    scene.add(y);
+    y.position.z -=200;
+})*/
+
+
+
+
+    
 
 
 renderer.setPixelRatio(window.devicePixelRatio);
@@ -56,7 +115,10 @@ canvas.width=window.innerWidth;
 camera.position.set(0,7,20); // Set position like this
 //controls.update();
 
+
 const objectPosition = player.position;
+
+
 
 function animate() {
     requestAnimationFrame(animate);
@@ -112,6 +174,7 @@ function keyPressed() {
     }) 
 
 }
+
 
 animate();
 
