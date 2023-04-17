@@ -49,12 +49,12 @@ scene.add(ground);
 const obstacle = new THREE.BoxGeometry(10,10, 3);
 const obstacleMaterial = new THREE.MeshBasicMaterial( {color: 0xFF6347});
 
-const boxObstacleOne = new THREE.Mesh(geometry, obstacleMaterial);
+const boxObstacleOne = new THREE.InstancedMesh(geometry, obstacleMaterial, 15);
 //boxObstacleOne.position.z -= 100;
 boxObstacleOne.position.y +=2;
 //scene.add(boxObstacleOne);
 
-const boxObstacleTwo = new THREE.Mesh(geometry, obstacleMaterial);
+const boxObstacleTwo = new THREE.InstancedMesh(geometry, obstacleMaterial, 15);
 //scene.add(boxObstacleTwo);
 boxObstacleTwo.position.x += 10;
 //boxObstacleTwo.position.z -= 100;
@@ -79,7 +79,29 @@ boxObstacleFive.position.x += 20;
 boxObstacleFive.position.y +=2;
 
 
-const rowOne = [boxObstacleOne, boxObstacleTwo, boxObstacleThree, boxObstacleFour, boxObstacleFive];
+scene.add(boxObstacleOne);
+scene.add(boxObstacleTwo);
+
+const dummy = new THREE.Object3D();
+const dummyTwo = new THREE.Object3D();
+for(let i=0; i<30; i++) {
+    //dummy.position.y +=1;
+    dummy.position.x = Math.random() * 47;
+    dummy.position.z = Math.random() * -250;
+
+    dummy.updateMatrix();
+    boxObstacleOne.setMatrixAt(i, dummy.matrix);
+}
+
+for(let i=0; i<30; i++) {
+    //dummy.position.y +=1;
+    dummyTwo.position.x = Math.random() * -47;
+    dummyTwo.position.z = Math.random() * -300;
+
+    dummyTwo.updateMatrix();
+    boxObstacleTwo.setMatrixAt(i, dummyTwo.matrix);
+}
+/*const rowOne = [boxObstacleOne, boxObstacleTwo, boxObstacleThree, boxObstacleFour, boxObstacleFive];
 
 const rowTwo = [boxObstacleOne, boxObstacleTwo, boxObstacleThree, boxObstacleFour, boxObstacleFive];
 
