@@ -54,13 +54,13 @@ const boxObstacleOne = new THREE.InstancedMesh(obstacle, obstacleMaterial, 30);
 boxObstacleOne.position.y +=2;
 
 const boxObstacleTwo = new THREE.InstancedMesh(obstacle, obstacleMaterial, 30);
-boxObstacleTwo.position.x -= 10;
+//boxObstacleTwo.position.x -= 10;
 boxObstacleTwo.position.y +=2;
 
 const boxObstacleThree = new THREE.InstancedMesh(obstacle, obstacleMaterial, 30);
 //boxObstacleThree.position.x += 10;
 boxObstacleThree.position.y +=2;
-boxObstacleThree.position.z -= 60;
+
 
 //Goal box
 const goalGeo = new THREE.BoxGeometry(100, 3, 3);
@@ -98,44 +98,10 @@ scene.add(boxObstacleTwo);
 scene.add(boxObstacleThree);
 
 boxObstacleOne.position.z -= 20;
-boxObstacleTwo.position.z -=20
+boxObstacleTwo.position.z -=20;
+boxObstacleThree.position.z -= 60;
 
 boxObstacleOne.position.x += 10;
-
-
-//Create multiple objects with the properties of the instanced meshes to serve as obstacles
-
-/*const dummy = new THREE.Mesh(geometry, material);
-const dummyTwo = new THREE.Mesh(geometry, material);
-dummy.name = "dummyOne";
-
-
-
-const dummyBox = new THREE.Box3().setFromObject(dummy);
-const dummyBoxTwo = new THREE.Box3().setFromObject(dummyTwo);
-
-for(let i=0; i<30; i++) {
-    //dummy.position.x = Math.random() * 50;
-    boxObstacleOne.position.z = Math.random() * -220;
-
-    //dummy.updateMatrix();
-    //boxObstacleOne.setMatrixAt(i, dummy.matrix);
-
-    //console.log(dummy.matrix);
-}
-
-for(let i=0; i<30; i++) {
-    //dummyTwo.position.x = Math.random() * -50;
-    boxObstacleTwo.position.z = Math.random() * -220;
-
-    //dummyTwo.updateMatrix();
-    //boxObstacleTwo.setMatrixAt(i, dummyTwo.matrix);
-}
-
-console.log(dummy);
-
-dummy.geometry.computeBoundingBox();
-dummyTwo.geometry.computeBoundingBox();*/
 
 obstacleList.push(boxObstacleOne);
 obstacleList.push(boxObstacleTwo);
@@ -260,5 +226,4 @@ function pauseGame() {
 pauseGame();
 animate();
 console.log(obstacleList);
-
 
