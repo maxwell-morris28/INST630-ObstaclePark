@@ -1,7 +1,67 @@
 canvas {
-    position: fixed; 
+    position: fixed;
+    z-index: -1;
     top: 0;
     left: 0;
     display: flex;
   
+  }
+
+.main {
+    height: 100%;
+    /*display: flex;*/
+    flex-direction: column;
+    align-items: center;
+    padding: 315px 470px;
+    gap: 10px;
+    background-color: rgb(255, 255, 255);    
+    visibility: hidden;
+    opacity: 0;
+  
+  }
+
+  .main #container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0px;
+    gap: 50px;
+    max-height: 100px;
+
+    flex: none;
+    order: 0;
+    align-self: stretch;
+    flex-grow: 1;
+  }
+
+  h1 {
+    color: black;
+    font-size: 50px;
+    font-family: Helvetica;
+    letter-spacing: 2px;
+  }
+  a {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    text-decoration: none;
+  }
+  button {
+    width: 50%;
+    padding: 10px 0px;
+    font-family: Helvetica;
+    letter-spacing: 1px;
+    font-size: large;
+    border-radius: 10px;
+    border: none;
+    min-width: 200px;
+    /*filter: drop-shadow(10px 1px);*/
+  
+  }
+  
+  button:hover {
+    background-color: gray;
+    transition: 300ms;
   }

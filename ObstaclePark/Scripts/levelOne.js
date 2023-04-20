@@ -29,7 +29,7 @@ const renderer = new THREE.WebGLRenderer({
 const canvas = document.querySelector('#field');
 
 const geometry = new THREE.BoxGeometry(3, 3, 3);
-const material = new THREE.MeshBasicMaterial( {color: 0xFF6347});
+const material = new THREE.MeshBasicMaterial( {color: "green"});
 const player = new THREE.InstancedMesh(geometry, material, 1);
 
 //Add player to the scene
@@ -38,7 +38,7 @@ player.translateY(2);
 
 //Create and add the Ground
 const groundTexture = new THREE.TextureLoader().load('pexels-pixabay-69927.jpg');
-const plane = new THREE.PlaneGeometry(100, 500);
+const plane = new THREE.PlaneGeometry(100, 350);
 const ground_color = new THREE.MeshBasicMaterial( {map: groundTexture});
 const ground = new THREE.Mesh(plane, ground_color);
 scene.add(ground);
@@ -46,7 +46,7 @@ scene.add(ground);
 //Level Obstacles
 
 //base box obstacle
-const obstacle = new THREE.BoxGeometry(10,10, 3);
+const obstacle = new THREE.BoxGeometry(3, 3, 3);
 const obstacleMaterial = new THREE.MeshBasicMaterial( {color: 0xFF6347});
 
 //Created instances of box obstacles that are positively and negatively positioned, respectively
@@ -54,16 +54,38 @@ const boxObstacleOne = new THREE.InstancedMesh(obstacle, obstacleMaterial, 30);
 boxObstacleOne.position.y +=2;
 
 const boxObstacleTwo = new THREE.InstancedMesh(obstacle, obstacleMaterial, 30);
-boxObstacleTwo.position.x += 10;
+boxObstacleTwo.position.x -= 10;
 boxObstacleTwo.position.y +=2;
+
+const boxObstacleThree = new THREE.InstancedMesh(obstacle, obstacleMaterial, 30);
+//boxObstacleThree.position.x += 10;
+boxObstacleThree.position.y +=2;
+boxObstacleThree.position.z -= 60;
+
+//Goal box
+const goalGeo = new THREE.BoxGeometry(100, 3, 3);
+const goalMat = new THREE.MeshBasicMaterial( {color: "white"} );
+const goal = new THREE.Mesh(goalGeo, goalMat);
+
+scene.add(goal);
+goal.position.z -= 140;
 
 //Create hitbox for player bound to its mesh
 const playerBox = new THREE.Box3().setFromObject(player);
 player.geometry.computeBoundingBox();
+
+//obstacle hitboxes
 const obstacleBox = new THREE.Box3().setFromObject(boxObstacleOne);
 boxObstacleOne.geometry.computeBoundingBox();
 const obstacleBoxTwo = new THREE.Box3().setFromObject(boxObstacleTwo);
 boxObstacleTwo.geometry.computeBoundingBox();
+const obstacleBoxThree = new THREE.Box3().setFromObject(boxObstacleThree);
+boxObstacleThree.geometry.computeBoundingBox();
+
+
+//goal hitbox
+const goalBox = new THREE.Box3().setFromObject(goal);
+goal.geometry.computeBoundingBox();
 
 
 //Empty array to hold each obstacle
@@ -73,38 +95,47 @@ const obstacleList = [];
 
 scene.add(boxObstacleOne);
 scene.add(boxObstacleTwo);
+scene.add(boxObstacleThree);
 
 boxObstacleOne.position.z -= 20;
 boxObstacleTwo.position.z -=20
 
-//boxObstacleOne.position.x += 30;
+boxObstacleOne.position.x += 10;
 
 
 //Create multiple objects with the properties of the instanced meshes to serve as obstacles
-const dummy = new THREE.Object3D();
-const dummyTwo = new THREE.Object3D();
 
-for(let i=0; i<0; i++) {
-    //dummy.position.y +=1;
-    dummy.position.x = Math.random() * 50;
-    dummy.position.z = Math.random() * -220;
+/*const dummy = new THREE.Mesh(geometry, material);
+const dummyTwo = new THREE.Mesh(geometry, material);
+dummy.name = "dummyOne";
 
-    dummy.updateMatrix();
-    boxObstacleOne.setMatrixAt(i, dummy.matrix);
-    //obstacleList.push(boxObstacleOne);
 
+
+const dummyBox = new THREE.Box3().setFromObject(dummy);
+const dummyBoxTwo = new THREE.Box3().setFromObject(dummyTwo);
+
+for(let i=0; i<30; i++) {
+    //dummy.position.x = Math.random() * 50;
+    boxObstacleOne.position.z = Math.random() * -220;
+
+    //dummy.updateMatrix();
+    //boxObstacleOne.setMatrixAt(i, dummy.matrix);
+
+    //console.log(dummy.matrix);
 }
 
-for(let i=0; i<1; i++) {
-    //dummy.position.y +=1;
-    dummyTwo.position.x = Math.random() * -50;
-    dummyTwo.position.z = Math.random() * -220;
+for(let i=0; i<30; i++) {
+    //dummyTwo.position.x = Math.random() * -50;
+    boxObstacleTwo.position.z = Math.random() * -220;
 
-    dummyTwo.updateMatrix();
-    boxObstacleTwo.setMatrixAt(i, dummyTwo.matrix);
-    //obstacleList.push(boxObstacleTwo);
-
+    //dummyTwo.updateMatrix();
+    //boxObstacleTwo.setMatrixAt(i, dummyTwo.matrix);
 }
+
+console.log(dummy);
+
+dummy.geometry.computeBoundingBox();
+dummyTwo.geometry.computeBoundingBox();*/
 
 obstacleList.push(boxObstacleOne);
 obstacleList.push(boxObstacleTwo);
@@ -144,17 +175,30 @@ function animate() {
     playerBox.copy( player.geometry.boundingBox ).applyMatrix4( player.matrixWorld );
     obstacleBox.copy( boxObstacleOne.geometry.boundingBox ).applyMatrix4( boxObstacleOne.matrixWorld );
     obstacleBoxTwo.copy( boxObstacleTwo.geometry.boundingBox ).applyMatrix4( boxObstacleTwo.matrixWorld );
+    obstacleBoxThree.copy( boxObstacleThree.geometry.boundingBox ).applyMatrix4( boxObstacleThree.matrixWorld );
+    goalBox.copy( goal.geometry.boundingBox ).applyMatrix4( goal.matrixWorld );
 
 
     keyPressed();
     playerMovement();
 
     //Detect collision: BROKEN!!!
-    if(obstacleBox.intersectsBox(playerBox) || obstacleBoxTwo.intersectsBox(playerBox)) {
+    if(obstacleBox.intersectsBox(playerBox) || obstacleBoxTwo.intersectsBox(playerBox) || obstacleBoxThree.intersectsBox(playerBox)) {
         console.log("yesssssss");
+        player.position.x = 0;
+        player.position.z = 0;
+    
     }
-    else {
-        console.log("nope");
+    else if(goalBox.intersectsBox(playerBox)) {
+        console.log("Level clear!");
+        const goalScreen = document.querySelector(".main");
+        goalScreen.style.visibility = "visible";
+        goalScreen.style.opacity = 1;
+        goalScreen.style.transition = "1s";
+
+        //goalScreen.style.transition = "2s";
+
+        
     }
 
     //render every frame
