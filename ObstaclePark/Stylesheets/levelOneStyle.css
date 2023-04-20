@@ -6,17 +6,24 @@ canvas {
     display: flex;
   
   }
+body {
+  margin: 0;
+  padding: 0;
+}
 
+* {
+  box-sizing: border-box;
+}
 .main {
-    height: 100%;
-    /*display: flex;*/
-    flex-direction: column;
-    align-items: center;
-    padding: 315px 470px;
-    gap: 10px;
-    background-color: rgb(255, 255, 255);    
-    visibility: hidden;
-    opacity: 0;
+  height: 100vh;
+  /*display: flex;*/
+  flex-direction: column;
+  align-items: center;
+  padding: 315px 470px;
+  gap: 10px;
+  background-color: rgb(255, 255, 255);    
+  visibility: hidden;
+  opacity: 0;
   
   }
 
@@ -27,7 +34,7 @@ canvas {
     justify-content: center;
     padding: 0px;
     gap: 50px;
-    max-height: 100px;
+    max-height: 150px;
 
     flex: none;
     order: 0;
