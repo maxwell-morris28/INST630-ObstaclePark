@@ -42,6 +42,32 @@ body {
     flex-grow: 1;
   }
 
+  .pause {
+    height: 100vh;
+    /*display: flex;*/
+    flex-direction: column;
+    align-items: center;
+    padding: 315px 470px;
+    gap: 10px;
+    background-color: rgba(0, 0, 0, 0.5);    
+    visibility: hidden;
+    opacity: 0;
+  }
+
+  .pause #menu {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0px;
+    max-height: 150px;
+
+    flex: none;
+    order: 0;
+    align-self: stretch;
+    flex-grow: 1;
+  }
+
   h1 {
     color: black;
     font-size: 50px;
