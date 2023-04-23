@@ -105,6 +105,8 @@ const obstacleBoxThree = new THREE.Box3().setFromObject(boxObstacleThree);
 boxObstacleThree.geometry.computeBoundingBox();
 const obstacleBoxFour = new THREE.Box3().setFromObject(boxObstacleFour);
 boxObstacleFour.geometry.computeBoundingBox();
+const obstacleBoxFive = new THREE.Box3().setFromObject(boxObstacleFive);
+boxObstacleFive.geometry.computeBoundingBox();
 
 
 //goal hitbox
@@ -158,6 +160,7 @@ function animate() {
     obstacleBoxTwo.copy( boxObstacleTwo.geometry.boundingBox ).applyMatrix4( boxObstacleTwo.matrixWorld );
     obstacleBoxThree.copy( boxObstacleThree.geometry.boundingBox ).applyMatrix4( boxObstacleThree.matrixWorld );
     obstacleBoxFour.copy( boxObstacleFour.geometry.boundingBox ).applyMatrix4( boxObstacleFour.matrixWorld );
+    obstacleBoxFive.copy( boxObstacleFive.geometry.boundingBox ).applyMatrix4( boxObstacleFive.matrixWorld );
     goalBox.copy( goal.geometry.boundingBox ).applyMatrix4( goal.matrixWorld );
 
 
@@ -170,7 +173,8 @@ function animate() {
         player.position.z -= 1;
     }
     //Detect collision: BROKEN!!!
-    if(obstacleBox.intersectsBox(playerBox) || obstacleBoxTwo.intersectsBox(playerBox) || obstacleBoxThree.intersectsBox(playerBox) || obstacleBoxFour.intersectsBox(playerBox)) {
+    if(obstacleBox.intersectsBox(playerBox) || obstacleBoxTwo.intersectsBox(playerBox) || obstacleBoxThree.intersectsBox(playerBox) || 
+    obstacleBoxFour.intersectsBox(playerBox) || obstacleBoxFive.intersectsBox(playerBox)) {
         console.log("yesssssss");
         player.position.x = 0;
         player.position.z = 0;

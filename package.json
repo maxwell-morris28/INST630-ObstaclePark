@@ -18,5 +18,8 @@
   "homepage": "https://github.com/maxwell-morris28/INST630-ObstaclePark#readme",
   "devDependencies": {
     "three-orbit-controls": "^82.1.0"
+  },
+  "dependencies": {
+    "curl": "^0.1.4"
   }
 }
