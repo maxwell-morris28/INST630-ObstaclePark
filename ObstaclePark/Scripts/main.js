@@ -156,7 +156,7 @@ export async function getAccessToken(clientId, code) {
 const token = await getAccessToken(clientId, code);
 //console.log(token);
 async function fetchProfile(token) {
-    const result = await fetch("https://api.spotify.com/v1/tracks/11dFghVXANMlKmJXsNCbNl", {
+    const result = await fetch("https://api.spotify.com/v1/tracks/?ids=7ovUcF5uHTBRzUpB6ZOmvt,6k0X05danQOXSBTVek5DU1", {
         method: "GET", headers: { Authorization: `Bearer ${token}` }
     });
 
@@ -164,14 +164,26 @@ async function fetchProfile(token) {
 }
 
 const profile = await fetchProfile(token);
-const trackName = profile.name;
-const artistName = profile.artists[0]["name"];
+const trackList = []
+for(let i=0; i<2; i++) {
+    trackList.push(profile["tracks"][i]);
+    console.log(trackList[0]);
+}
+console.log(`list is ${trackList}`);
+//const trackName = profile.name;
+//const artistName = profile.artists[0]["name"];
+//console.log(artistName);
 /*for (let element in profile.artists[0]) {
     console.log(element);
 }*/
-console.log(trackName);
-console.log(artistName);
+//console.log(trackName);
+//console.log(artistName);
+function trackShuffle() {
+    
+}
 
 const playing = document.querySelector('.test');
-playing.setHTML(`Now playing: ${trackName} by ${artistName}`);
+const randomNumber = Math.floor(Math.random() * 2);
+console.log(randomNumber);
+playing.setHTML(`Now playing: ${trackList[randomNumber]["name"]} by ${trackList[randomNumber].artists[0]["name"]}`);
 console.log(playing);
