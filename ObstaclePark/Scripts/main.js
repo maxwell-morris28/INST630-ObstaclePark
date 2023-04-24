@@ -30,13 +30,21 @@ renderer.render(scene, camera);
 
 canvas.height=window.innerHeight;
 canvas.width=window.innerWidth;
-
+const materialList = [];
 //const geometry = new THREE.TorusGeometry(10, 3, 16, 100);
 const geometry = new THREE.IcosahedronGeometry(18, 1);
 const material = new THREE.MeshBasicMaterial( {color: 0xFF6347, wireframe: true  });
+const greenMaterial = new THREE.MeshBasicMaterial( {color: 'green', wireframe: true  });
+const yellowMaterial = new THREE.MeshBasicMaterial( {color: 'yellow', wireframe: true  });
+const whiteMaterial = new THREE.MeshBasicMaterial( {color: 'white', wireframe: true  });
+
+materialList.push(greenMaterial);
+materialList.push(material);
+materialList.push(yellowMaterial);
+materialList.push(whiteMaterial);
 //const torus = new THREE.Mesh(geometry, material);
 const hedron = new THREE.Mesh(geometry, material);
-
+//hedron.material = greenMaterial;
 //scene.add(torus);
 scene.add(hedron);
 
@@ -178,12 +186,26 @@ console.log(`list is ${trackList}`);
 }*/
 //console.log(trackName);
 //console.log(artistName);
-function trackShuffle() {
-    
-}
 
 const playing = document.querySelector('.test');
 const randomNumber = Math.floor(Math.random() * 2);
-console.log(randomNumber);
+//console.log(randomNumber);
 playing.setHTML(`Now playing: ${trackList[randomNumber]["name"]} by ${trackList[randomNumber].artists[0]["name"]}`);
-console.log(playing);
+//console.log(playing);*/
+
+const shuffleBtn = document.querySelector('#shuffle');
+console.log(shuffleBtn);
+shuffleBtn.addEventListener("click", function() {
+    //const playing = document.querySelector('.test');
+    const randomNumber = Math.floor(Math.random() * 2);
+    const randomColor = Math.floor(Math.random() * 4);
+    //console.log(randomNumber);
+    playing.setHTML(`Now playing: ${trackList[randomNumber]["name"]} by ${trackList[randomNumber].artists[0]["name"]}`);
+    hedron.material = materialList[randomColor];
+    //console.log(playing);
+    //console.log('clicked!');
+});
+
+
+
+
