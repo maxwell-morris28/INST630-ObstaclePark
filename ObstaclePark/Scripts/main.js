@@ -34,7 +34,7 @@ const materialList = [];
 //const geometry = new THREE.TorusGeometry(10, 3, 16, 100);
 const geometry = new THREE.IcosahedronGeometry(18, 1);
 const material = new THREE.MeshBasicMaterial( {color: 0xFF6347, wireframe: true  });
-const greenMaterial = new THREE.MeshBasicMaterial( {color: 'green', wireframe: true  });
+const greenMaterial = new THREE.MeshBasicMaterial( {color: 'lightgreen', wireframe: true  });
 const yellowMaterial = new THREE.MeshBasicMaterial( {color: 'yellow', wireframe: true  });
 const whiteMaterial = new THREE.MeshBasicMaterial( {color: 'white', wireframe: true  });
 
@@ -190,7 +190,7 @@ console.log(`list is ${trackList}`);
 const playing = document.querySelector('.test');
 const randomNumber = Math.floor(Math.random() * 2);
 //console.log(randomNumber);
-playing.setHTML(`Now playing: ${trackList[randomNumber]["name"]} by ${trackList[randomNumber].artists[0]["name"]}`);
+playing.setHTML(`${trackList[randomNumber]["name"]} by ${trackList[randomNumber].artists[0]["name"]}`);
 //console.log(playing);*/
 
 const shuffleBtn = document.querySelector('#shuffle');
@@ -200,7 +200,7 @@ shuffleBtn.addEventListener("click", function() {
     const randomNumber = Math.floor(Math.random() * 2);
     const randomColor = Math.floor(Math.random() * 4);
     //console.log(randomNumber);
-    playing.setHTML(`Now playing: ${trackList[randomNumber]["name"]} by ${trackList[randomNumber].artists[0]["name"]}`);
+    playing.setHTML(`${trackList[randomNumber]["name"]} by ${trackList[randomNumber].artists[0]["name"]}`);
     hedron.material = materialList[randomColor];
     //console.log(playing);
     //console.log('clicked!');

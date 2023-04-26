@@ -48,6 +48,18 @@ body {
     font-family: Helvetica;
     letter-spacing: 2px;
   }
+  .hud {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin: auto;
+    z-index: -1;
+  }
+  .hud h1#levelCount {
+    font-size: 50px;
+    position:absolute;
+    color: white;
+  }
   a {
     width: 100%;
     display: flex;
