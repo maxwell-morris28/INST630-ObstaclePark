@@ -1,0 +1,86 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+#bg {
+  position: fixed; 
+  top: 0;
+  left: 0;
+  z-index: -1;
+  display: flex;
+}
+body {
+  background-image: url('confetti_two.gif');
+  background-color: black;
+}
+.main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 315px 470px;
+  gap: 10px;
+  height: 100vh;
+    /*position: relative;
+    width: 1440px;
+    height: 1023px;*/
+  }
+  
+  .main #container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 50px;
+  
+    max-height: 100px;
+  
+  
+    /* Inside auto layout */
+  
+    flex: none;
+    order: 0;
+    align-self: stretch;
+    flex-grow: 1;
+  }
+  
+  h1 {
+    color: white;
+    font-size: 50px;
+    font-family: Helvetica;
+    letter-spacing: 2px;
+  }
+  a {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    text-decoration: none;
+  }
+  p {
+    color: white;
+    text-align: center;
+    font-size: 25px;
+    font-family: Helvetica;
+    letter-spacing: 1px;
+    width: 100%;
+    
+  }
+  button {
+    width: 50%;
+    padding: 10px 0px;
+    font-family: Helvetica;
+    letter-spacing: 1px;
+    font-size: large;
+    border-radius: 10px;
+    border: none;
+    min-width: 200px;
+    /*filter: drop-shadow(10px 1px);*/
+  
+  }
+  
+  button:hover {
+    background-color: gray;
+    transition: 300ms;
+  }
