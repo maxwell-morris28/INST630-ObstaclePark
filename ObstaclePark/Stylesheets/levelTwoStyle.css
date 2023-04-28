@@ -43,10 +43,10 @@ flex-grow: 1;
 }
 
 h1 {
-color: black;
-font-size: 50px;
-font-family: Helvetica;
-letter-spacing: 2px;
+  color: black;
+  font-size: 50px;
+  font-family: Helvetica;
+  letter-spacing: 2px;
 }
 .hud {
   display: flex;
@@ -56,9 +56,13 @@ letter-spacing: 2px;
   z-index: -1;
 }
 .hud h1#levelCount {
+  z-index: -1;
   font-size: 50px;
   position:absolute;
   color: white;
+  background-color: rgba(0, 0, 0, 0.6);
+  padding: 0px 20px;
+  border-radius: 20px;
 }
 a {
 width: 100%;

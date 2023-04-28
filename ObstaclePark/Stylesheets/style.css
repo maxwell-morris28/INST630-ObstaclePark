@@ -77,3 +77,19 @@ button:hover {
   background-color: gray;
   transition: 300ms;
 }
+.imageArray {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.item {
+  max-width: 50%;
+  border-radius: 20px;
+}
+.hidden {
+  display: none;
+}
+
+.visible {
+  display: block;
+}

@@ -164,7 +164,8 @@ export async function getAccessToken(clientId, code) {
 const token = await getAccessToken(clientId, code);
 //console.log(token);
 async function fetchProfile(token) {
-    const result = await fetch("https://api.spotify.com/v1/tracks/?ids=7ovUcF5uHTBRzUpB6ZOmvt,6k0X05danQOXSBTVek5DU1", {
+    const result = await fetch("https://api.spotify.com/v1/tracks/?ids=7ovUcF5uHTBRzUpB6ZOmvt,6k0X05danQOXSBTVek5DU1,14Bcv6siTBPw3TlP84dasC,3PXmiB8Htr95ccAdKyIsyR,6EO56btPzDF3LUrfwlXi2j", 
+    {
         method: "GET", headers: { Authorization: `Bearer ${token}` }
     });
 
@@ -172,10 +173,10 @@ async function fetchProfile(token) {
 }
 
 const profile = await fetchProfile(token);
-const trackList = []
-for(let i=0; i<2; i++) {
+const trackList = [];
+for(let i=0; i<5; i++) {
     trackList.push(profile["tracks"][i]);
-    console.log(trackList[0]);
+    console.log(trackList[i]);
 }
 console.log(`list is ${trackList}`);
 //const trackName = profile.name;
@@ -189,7 +190,15 @@ console.log(`list is ${trackList}`);
 
 const playing = document.querySelector('.test');
 const randomNumber = Math.floor(Math.random() * 2);
+const slides = document.querySelectorAll('.item');
+const slidesArray = Array.from(slides);
 //console.log(randomNumber);
+slidesArray.forEach((slide) => {
+    slide.classList.remove('visible'); // Let's remove any visibility
+    slide.classList.add('hidden'); // and "add" the 'hidden' class, which sets display="none" for us in the css
+  });
+
+  slides[randomNumber].classList.add('visible');
 playing.setHTML(`${trackList[randomNumber]["name"]} by ${trackList[randomNumber].artists[0]["name"]}`);
 //console.log(playing);*/
 
@@ -197,8 +206,14 @@ const shuffleBtn = document.querySelector('#shuffle');
 console.log(shuffleBtn);
 shuffleBtn.addEventListener("click", function() {
     //const playing = document.querySelector('.test');
-    const randomNumber = Math.floor(Math.random() * 2);
+    const randomNumber = Math.floor(Math.random() * 5);
     const randomColor = Math.floor(Math.random() * 4);
+    slidesArray.forEach((slide) => {
+        slide.classList.remove('visible'); // Let's remove any visibility
+        slide.classList.add('hidden'); // and "add" the 'hidden' class, which sets display="none" for us in the css
+      });
+    
+      slides[randomNumber].classList.add('visible');
     //console.log(randomNumber);
     playing.setHTML(`${trackList[randomNumber]["name"]} by ${trackList[randomNumber].artists[0]["name"]}`);
     hedron.material = materialList[randomColor];
