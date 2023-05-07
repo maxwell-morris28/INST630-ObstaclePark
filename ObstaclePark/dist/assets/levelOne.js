@@ -30,7 +30,7 @@ const canvas = document.querySelector('#field');
 
 const geometry = new THREE.BoxGeometry(3, 3, 3);
 const material = new THREE.MeshBasicMaterial( {color: "green"});
-const player = new THREE.InstancedMesh(geometry, material, 1);
+const player = new THREE.Mesh(geometry, material, 1);
 
 //Add player to the scene
 scene.add(player);
@@ -50,14 +50,14 @@ const obstacle = new THREE.BoxGeometry(3, 3, 3);
 const obstacleMaterial = new THREE.MeshBasicMaterial( {color: 0xFF6347});
 
 //Created instances of box obstacles that are positively and negatively positioned, respectively
-const boxObstacleOne = new THREE.InstancedMesh(obstacle, obstacleMaterial, 30);
+const boxObstacleOne = new THREE.Mesh(obstacle, obstacleMaterial, 30);
 boxObstacleOne.position.y +=2;
 
-const boxObstacleTwo = new THREE.InstancedMesh(obstacle, obstacleMaterial, 30);
+const boxObstacleTwo = new THREE.Mesh(obstacle, obstacleMaterial, 30);
 boxObstacleTwo.position.x -= 10;
 boxObstacleTwo.position.y +=2;
 
-const boxObstacleThree = new THREE.InstancedMesh(obstacle, obstacleMaterial, 30);
+const boxObstacleThree = new THREE.Mesh(obstacle, obstacleMaterial, 30);
 //boxObstacleThree.position.x += 10;
 boxObstacleThree.position.y +=2;
 boxObstacleThree.position.z -= 60;
@@ -184,7 +184,7 @@ function animate() {
         player.position.z += 0;
     }
     else {
-        player.position.z -= 1;
+        player.position.z -= 2;
     }
     //Detect collision: BROKEN!!!
     if(obstacleBox.intersectsBox(playerBox) || obstacleBoxTwo.intersectsBox(playerBox) || obstacleBoxThree.intersectsBox(playerBox)) {
@@ -227,10 +227,10 @@ function keyPressed() {
     
 function playerMovement() {
     if(leftDown && player.position.x > -48 && pause === false) {
-        player.position.x -=1.5;
+        player.position.x -=2;
     }
     else if(rightDown && player.position.x < 48 && pause === false) {
-        player.position.x +=1.5;
+        player.position.x +=2;
     } 
 }
 
