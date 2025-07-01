@@ -90,8 +90,8 @@ scene.add(hedron );
 let cameraDistance = 1;
 //camera.position.z = cameraDistance;
 //hedron.add( camera );
-
-const clientId = "c801ed81d22d414699983ae86e6677dc";
+/*
+const clientId = "";
 const params = new URLSearchParams(window.location.search);
 const code = params.get("code");
 
@@ -160,7 +160,7 @@ export async function getAccessToken(clientId, code) {
     return access_token;
 }
 
-//const token = 'BQDlJTy1bsCVjEWOqbOnv69CHxapqF4yesneaspv4dHpVMEAEC-FVVvM0QgahTc5Lzjr54dOoTzTMEn7mISqzDOz0cYM1gAYAaxrPIwxc0-DMkh3pxbt';
+//const token = '';
 const token = await getAccessToken(clientId, code);
 //console.log(token);
 async function fetchProfile(token) {
@@ -188,6 +188,7 @@ console.log(`list is ${trackList}`);
 //console.log(trackName);
 //console.log(artistName);
 
+/*
 const playing = document.querySelector('.test');
 const randomNumber = Math.floor(Math.random() * 2);
 const slides = document.querySelectorAll('.item');
@@ -200,7 +201,7 @@ slidesArray.forEach((slide) => {
 
   slides[randomNumber].classList.add('visible');
 playing.setHTML(`${trackList[randomNumber]["name"]} by ${trackList[randomNumber].artists[0]["name"]}`);
-//console.log(playing);*/
+//console.log(playing);
 
 const shuffleBtn = document.querySelector('#shuffle');
 console.log(shuffleBtn);
@@ -220,7 +221,7 @@ shuffleBtn.addEventListener("click", function() {
     //console.log(playing);
     //console.log('clicked!');
 });
-
+*/
 
 
 
