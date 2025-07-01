@@ -7,6 +7,7 @@ import * as THREE from "three";
 //Creating the scene that holds all 
 const scene = new THREE.Scene();
 scene.background = new THREE.Color(0x24252a);
+console.log("this one");
 
 
 //Perspective Camera
