@@ -90,7 +90,7 @@ scene.add(hedron );
 let cameraDistance = 1;
 //camera.position.z = cameraDistance;
 //hedron.add( camera );
-
+/*
 const clientId = "c801ed81d22d414699983ae86e6677dc";
 const params = new URLSearchParams(window.location.search);
 const code = params.get("code");
@@ -184,7 +184,7 @@ console.log(`list is ${trackList}`);
 //console.log(artistName);
 /*for (let element in profile.artists[0]) {
     console.log(element);
-}*/
+}
 //console.log(trackName);
 //console.log(artistName);
 
@@ -201,7 +201,7 @@ slidesArray.forEach((slide) => {
   slides[randomNumber].classList.add('visible');
 playing.setHTML(`${trackList[randomNumber]["name"]} by ${trackList[randomNumber].artists[0]["name"]}`);
 //console.log(playing);*/
-
+/*
 const shuffleBtn = document.querySelector('#shuffle');
 console.log(shuffleBtn);
 shuffleBtn.addEventListener("click", function() {
@@ -220,7 +220,7 @@ shuffleBtn.addEventListener("click", function() {
     //console.log(playing);
     //console.log('clicked!');
 });
-
+*/
 
 
 
