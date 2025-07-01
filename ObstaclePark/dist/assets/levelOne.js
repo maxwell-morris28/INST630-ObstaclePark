@@ -1,5 +1,4 @@
-import * as THREE from "three";
-
+import * as THREE from 'https://esm.sh/three@0.160.1';
 //Initialize the scene
 
 //Create camera offset

@@ -20,6 +20,7 @@
     "three-orbit-controls": "^82.1.0"
   },
   "dependencies": {
-    "curl": "^0.1.4"
+    "curl": "^0.1.4",
+    "three": "^0.178.0"
   }
 }
